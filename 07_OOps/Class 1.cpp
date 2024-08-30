@@ -4,7 +4,7 @@
         class 1 contents:
 ----------------------------------------------------------------
 
-class, objects,constructors,access specifiers,polymorphism
+class, objects,constructors,access specifiers,polymorphism,absctraction
 
 */
 
@@ -217,6 +217,10 @@ int main(){
     cout<<st3.name<<endl;
     // cout<<st3.gf<<endl;// this will generate an error because is private.
     Student st4("sameer2",20);    //iski gf nhi hai,this will call constructor in which have only 2 parameter ,if it is not then it will generate error.
+
+    Student st5("suhail","khan",10);
+    Student st6;
+    st6=st5 // copy constructor
 
 
 }
