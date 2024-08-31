@@ -192,6 +192,26 @@ class Student{
             cout<<"Parameterixed constructor called in which have 2 parameter"<<endl;
         }
 
+        // copy constructor
+        Student(const Student &sourceName){
+            this->name=sourceName.name;
+            this->gf=sourceName.gf;
+            this.age=sourceName.age;
+        }
+
+
+        // --------------------------------------------
+        //         DESTRUCTOR
+        // ----------------------------------------------
+
+        /*
+            if you dont write destructor, then compiler will the responsibility and it use to deallocate the memory.
+        */
+       ~Student(){
+        cout<<"Default Destructor is called";
+        delete v;// consider v is a vector.
+       }
+
          void study(){
             cout<<"Studying";
         }
@@ -220,7 +240,7 @@ int main(){
 
     Student st5("suhail","khan",10);
     Student st6;
-    st6=st5 // copy constructor
+    st6=st5 // copy constructor, konse ese function hote hai, jiska return type nhi hota? constructor 😀
 
 
 }
