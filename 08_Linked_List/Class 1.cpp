@@ -132,6 +132,62 @@ void insertAtPosition(Node* &head,Node* &tail,int data,int position){
     }
 }
 
+void deleteNode(Node* &head,Node* &tail,int position){
+    // empty list
+    if(head==NULL){
+        cout<<"Linked list already empty";
+        return ;
+    }
+    if(head==tail){
+        // single elemtn
+        Node* temp=head;
+        delete temp;
+        head=NULL;
+        tail=NULL;
+    }
+    int len=getLength(head);
+    // delete from head
+    if(position==1){
+        // first node ko delte krdo
+        Node* temp=head;
+        head=head->next;
+        temp->next=NULL;
+        delete temp;
+    }
+    else if(position==len){
+        // last node delte krod
+        // find previous
+        Node* prev=head;
+        while(prev->next!=tail){
+            prev=prev->next;
+        }
+        // prev node ka link null kro
+        prev->next=NULL;
+        
+        // delete node
+        delete tail;
+        // update tail
+        tail=prev;
+    }
+    else {
+        // middle se koi node delete krna hai
+        Node* prev=NULL;
+        Node* curr=head;
+        // step1: set pre/curr pointers
+        while(position!=1){
+            position--;
+            prev=curr;
+            curr=curr->next;
+        }
+        // step 2:prev->next me curr ka next node add kro
+        prev->next=curr->next;
+        // step 3: node isolate krdo
+        curr->next=NULL;
+        // step 4:delete the node
+        delete curr;
+        
+    }
+}
 
 int main() {
   // creation of node
@@ -170,17 +226,31 @@ int main() {
 
     Node *head=NULL;
     Node *tail=NULL;
-    insertAtHead(head,tail,10);
-    insertAtHead(head,tail,49);
-    insertAtTail(head,tail,39);
-    insertAtHead(head,tail,229);
-    insertAtHead(head,tail,329);
-    insertAtTail(head,tail,349);
+    // insertAtHead(head,tail,10);
+    // insertAtHead(head,tail,49);
+    // insertAtTail(head,tail,39);
+    // insertAtHead(head,tail,229);
+    // insertAtHead(head,tail,329);
+    // insertAtTail(head,tail,349);
 
     // printLL(head);
 
     // insertAtPosition(head,tail,10,3);
-    insertAtPosition(head,tail,10,757);
+    // insertAtPosition(head,tail,10,757);
+    printLL(head);
+    
+    //delete node
+    insertAtHead(head,tail,10);
+    insertAtHead(head,tail,20);
+    insertAtHead(head,tail,30);
+    insertAtHead(head,tail,40);
+    insertAtHead(head,tail,50);
+    
+    printLL(head);
+    // deleteNode(head,tail,1);
+    // deleteNode(head,tail,5);
+    deleteNode(head,tail,3);
+    
     printLL(head);
   
   return 0;
