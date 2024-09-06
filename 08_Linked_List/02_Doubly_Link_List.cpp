@@ -182,7 +182,7 @@ int main(){
     // testing deletion
     // deleteNode(head,tail,1);
     deleteNode(head,tail,6);
-    print(head);
+    print(head);  
     return 0;
 }
 
