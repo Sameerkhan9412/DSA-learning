@@ -15,30 +15,21 @@ void RotateArray(vector<int> arr,int k){
     }
     
 }
-method 2:
-// method 2:
-    void reverse(vector<int> &nums,int s,int e){
-        while(s<=e){
-            swap(nums[s],nums[e]);
-            s++;
-            e--;
-        }
+// method 2: bast approach
+void reverse(vector<int> &nums,int n,int start,int end){
+    while(start<=end){
+        swap(nums[start],nums[end]);
+        start++;
+        end--;
     }
-    void rotate(vector<int>& nums, int k) {
-        int n=nums.size();
-        if(n==1){
-            return;
-        }
-        else{
-            if(k>n){
-                k=k%n;//bhool jata tu ise
-            }
-            reverse(nums,0,n-1);
-            reverse(nums,0,k-1);
-            reverse(nums,k,n-1);
-        }
-        
-    }
+}
+void rotate(vector<int>& nums, int k) {
+    int n=nums.size();
+    k=k%n;
+    reverse(nums,n,0,n-1);
+    reverse(nums,n,0,k-1);
+    reverse(nums,n,k,n-1);
+}
 int main(){
     vector<int> arr={2,3,4,5,6,7};
     int k=3;
