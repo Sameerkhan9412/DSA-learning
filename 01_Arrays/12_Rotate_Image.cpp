@@ -16,7 +16,7 @@ using namespace std;
         int n = matrix.size();
         // transpose
         for (int i = 0; i < matrix.size(); i++) {
-            for (int j = i; j < matrix[i].size(); j++) {
+            for (int j = i; j < matrix[i].size(); j++) {    //is condition ko bht bhoolte hai
                 swap(matrix[i][j], matrix[j][i]);
             }
         }
