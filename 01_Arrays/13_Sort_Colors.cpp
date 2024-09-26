@@ -33,19 +33,19 @@ public:
 
     /*Method 2: Inplace -> ye achcha h-> using 3 ponter approach
     void sortColors(vector<int>& nums) {
-        int l=0,m=0,h=nums.size()-1;
-        while(m<=h){
-            if(nums[m]==0){
-                swap(nums[l],nums[m]);
-                l++;
-                m++;
+       int start=0,mid=0,end=nums.size()-1;
+        while(mid<=end){
+            if(nums[mid]==0){
+                swap(nums[start],nums[mid]);
+                start++;
+                mid++;
             }
-            else if(nums[m]==1){
-                m++;
+            else if(nums[mid]==1){
+                mid++;
             }
             else{
-                swap(nums[m],nums[h]);
-                h--;
+                swap(nums[mid],nums[end]);
+                end--;
             }
         }
     }*/
