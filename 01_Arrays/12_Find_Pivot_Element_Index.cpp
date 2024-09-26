@@ -42,7 +42,25 @@ public:
         }
         return -1;
     }
-
+    sabse best method:
+    class Solution {
+    public:
+        int pivotIndex(vector<int>& nums) {
+            int sum=0;
+            for(int i=0;i<nums.size();i++){
+                sum+=nums[i];
+            }
+            int cumulativeSum=0;
+            for(int i=0;i<nums.size();i++){
+                int lastSum=sum-nums[i]-cumulativeSum;
+                if(cumulativeSum==lastSum){
+                    return i;
+                }
+                cumulativeSum+=nums[i];
+            }
+            return -1;
+        }
+    };
     int pivotIndex(vector<int>& nums) {
         // method 1:
         // return bruteforce(nums);
