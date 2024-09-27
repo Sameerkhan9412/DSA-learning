@@ -3,55 +3,70 @@
 
 // ques. link:https://www.geeksforgeeks.org/problems/common-elements1132/1
 
-
-#include<iostream>
-using namespace std;
-
-void method1(int arr1[],int arr2[],int arr3[],int n1,int n2,int n3){
-    for(int i=0;i<n1;i++){
-        for(int j=0;j<n2;j++){
-                if(arr1[i]==arr2[j]){
-                    cout<<arr1[i]<<" "<<endl;
-                } 
-            for(int k=0;k<n3;k++){
-                if((arr1[i]==arr2[j])&&(arr1[j]==arr3[k])){
-                    cout<<arr1[i]<<" ";
-                } 
-            }  
+// this is pass 1210/1215 test cases on gfg
+// method 1: isme duplicate bhi add honge that why saare test case nhi chal rhe
+class Solution {
+  public:
+    // Function to find common elements in three arrays.
+    vector<int> commonElements(vector<int> &arr1, vector<int> &arr2,
+                               vector<int> &arr3) {
+        // Code Here
+        int i=0,j=0,k=0;
+        vector<int> ans;
+        while(i<arr1.size() && j<arr2.size() && k<arr3.size()){
+            if((arr1[i]==arr2[j]) && (arr2[j]==arr3[k])){
+                ans.push_back(arr1[i]);
+                i++;
+                j++;
+                k++;
+            }
+            else if(arr1[i]<arr2[j]){
+                 i++;   
+            }
+            else if(arr2[j]<arr3[k]){
+                j++;
+            }
+            else{
+                k++;
+            }
+            
         }
+        return ans;
     }
+};
 
-}
 
+// method 2://sab same hai sirf duplicates ko add nhi kiya hai, isse 1215 test case success horhe hai
 
-void method2(int arr1[],int arr2[],int arr3[],int n1,int n2,int n3){
-    int ans[];
-    int i,j,k;
-    while(i<n1&&j<n2&&k<n3){
-        if(arr1[i]==arr2[k]&&arr2[2]==arr3[k]){
-            cout<<arr1[i]<<" ";
-            i++,j++,k++;
+class Solution {
+  public:
+    // Function to find common elements in three arrays.
+    vector<int> commonElements(vector<int> &arr1, vector<int> &arr2,
+                               vector<int> &arr3) {
+        // Code Here
+        int i=0,j=0,k=0;
+        vector<int> ans;
+        while(i<arr1.size() && j<arr2.size() && k<arr3.size()){
+            if((arr1[i]==arr2[j]) && (arr2[j]==arr3[k])){
+                // Avoid duplicates
+            if (ans.empty() || ans.back() != arr1[i]) {    // ye hai wo condition, ise bhul jate hai
+                ans.push_back(arr1[i]);
+            }
+                i++;
+                j++;
+                k++;
+            }
+            else if(arr1[i]<arr2[j]){
+                 i++;   
+            }
+            else if(arr2[j]<arr3[k]){
+                j++;
+            }
+            else{
+                k++;
+            }
+            
         }
-        else if(arr1[i]<arr2[j]){
-            i++;
-        }
-        else if(arr2[j]<arr3[k]){
-            j++;
-        }
-        else{
-            k++;
-        }
+        return ans;
     }
-}
-
-int main(){
-    int arr1[]={1,5,10,20,40,80};
-    int arr2[]={6,7,20,80,100};
-    int arr3[]={3,4,15,20,30,70,80,120};
-    int n1=sizeof(arr1)/sizeof(int);
-    int n2=sizeof(arr2)/sizeof(int);
-    int n3=sizeof(arr3)/sizeof(int);
-    // method1(arr1,arr2,arr3,n1,n2,n3);
-    method2(arr1,arr2,arr3,n1,n2,n3);
-    return 0;
-}
+};
