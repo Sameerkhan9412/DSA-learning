@@ -46,6 +46,22 @@ void method2(int a[],int n){    //sorting and swapping
 
 }
 
+// method 3:
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int ans=0;
+        for(int i=1;i<=nums.size();i++){
+            ans=ans^i;    //is line me mistake hojari hai
+        }
+
+        for(int i=0;i<nums.size();i++){
+            ans=ans^nums[i];
+        }
+       return ans;
+    }
+};
+
 int main(){
     // int a[]={1,3,5,3,5};
     // int a[]={1,3,5,3,4};
