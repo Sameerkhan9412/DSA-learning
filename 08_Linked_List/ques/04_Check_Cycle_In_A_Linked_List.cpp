@@ -9,6 +9,7 @@
  */
 class Solution {
 public:
+    // interviewer happy nhi hoga
     bool hasCycle(ListNode *head) {
         map<ListNode* ,bool> table;
         ListNode* temp=head;
@@ -23,6 +24,26 @@ public:
             temp=temp->next;
         }
         // loop not present
+        return false;
+    }
+};
+
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode* tempHead=head;
+        ListNode* first=tempHead;
+        ListNode* second=tempHead;
+        while(second!=NULL){
+            second=second->next;
+            if(second!=NULL){
+                if(second==first){
+                    return true;
+                }
+                second=second->next;
+                first=first->next;
+            }
+        }
         return false;
     }
 };
