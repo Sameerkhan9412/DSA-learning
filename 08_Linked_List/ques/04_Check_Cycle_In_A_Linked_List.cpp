@@ -28,22 +28,24 @@ public:
     }
 };
 
+// best approach//
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
         ListNode* tempHead=head;
-        ListNode* first=tempHead;
-        ListNode* second=tempHead;
-        while(second!=NULL){
-            second=second->next;
-            if(second!=NULL){
-                if(second==first){
+        ListNode* fast=tempHead;
+        ListNode* slow=tempHead;
+        while(fast!=NULL){
+            fast=fast->next;
+            if(fast!=NULL){
+                if(slow==fast){
                     return true;
                 }
-                second=second->next;
-                first=first->next;
+                fast=fast->next;
+                slow=slow->next;
             }
         }
         return false;
     }
 };
+time complexity:O(N)
