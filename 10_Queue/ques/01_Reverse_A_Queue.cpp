@@ -8,7 +8,7 @@ void reverseQueue(queue<int> &q){
     stack<int> st;
     while(!q.empty()){
         int Element=q.front();
-        q.pop();
+        q.pop();//pop before push to maintain space complexity
         st.push(Element);
     }
     // one by one print element
